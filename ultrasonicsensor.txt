@@ -1,0 +1,26 @@
+
+const int trigPin = 6;
+const int echoPin = 9;
+long duration;
+int distance;
+void setup() {
+  pinMode(trigPin, OUTPUT); 
+  pinMode(echoPin, INPUT); 
+  Serial.begin(9400); 
+}
+void loop() {
+
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(3);
+ 
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+ 
+  duration = pulseIn(echoPin, HIGH);
+  
+  distance = duration * 0.038 / 2;
+ 
+  Serial.print("Distance: ");
+  Serial.println(distance);
+}
